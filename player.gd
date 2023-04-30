@@ -2,9 +2,8 @@ extends CharacterBody3D
 
 @onready var camera = $Camera3D
 @onready var anim_player = $AnimationPlayer
-@onready var muzzle_flash = $Camera3D/Weapon/Pistol_B/MuzzleFlash
+@onready var muzzle_flash = $Camera3D/Pistol_B/MuzzleFlash
 @onready var raycast = $Camera3D/RayCast3D
-@onready var pause_menu = $PauseMenu
 
 var health = 3
 
@@ -39,10 +38,8 @@ func _unhandled_input(event):
 		play_shoot_effects.rpc()
 		if raycast.is_colliding():
 			var hit_player = raycast.get_collider()
-	elif event.is_action_pressed("esc"):
-		pause_menu.pause()
-		
 			
+
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
 	
